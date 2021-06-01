@@ -8,14 +8,14 @@ const GalleryContainer = () => {
    
 
     const renderImageCards = () => {
-        console.log(images.length)
-        let counter = 3;
-        const currentImages  = images.slice(0, counter)
-        if(images.legth <= 3) {
+        let remainingImages = images
+        const currentImages  = images.splice(0, 3)
+        console.log(`Current:${currentImages}`, `remaining:${remainingImages}`)
+        if(remainingImages > 3 ) {
             return currentImages.map( (imageData) => {
                return <ImageCard src={imageData.image.imageURL} title={imageData.image.imageTitle}/>
             })
-        } else if (true) {
+        } else if (remainingImages === 0) {
             return currentImages.map( (imageData) => {
                 return <ImageCard src={imageData.image.imageURL} title={imageData.image.imageTitle}/>
              })
