@@ -6,6 +6,24 @@
   height: 40vmin;
   pointer-events: none;
 }
+.gallery {
+  width: 25%;
+  height:auto;
+}
+.image-card {
+  display: grid;
+  margin-left: 20px;
+
+  background-color: gray;
+}
+.image-card h1 {
+  text-align: center;
+}
+.image-card img {
+  height: 500px;
+  width: auto;
+  border-radius: 10px;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
