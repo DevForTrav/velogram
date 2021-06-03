@@ -1,33 +1,31 @@
-import React from 'react'
+import React,{useState} from 'react'
 import ImageCard from './ImageCard'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { Container, Row } from 'react-bootstrap'
 import images from '../data.json'
+import UploadImageForm from './UploadImageForm'
 
 const GalleryContainer = () => {
-   
+
+    const [ imageCards, setImageCards ] = useState([])
+
+    const renderRow = (arg) => {
+        return (<Row lg={3}>{arg}</Row>)
+    }
 
     const renderImageCards = () => {
-        let remainingImages = images
-        const currentImages  = images.splice(0, 3)
-        console.log(`Current:${currentImages}`, `remaining:${remainingImages}`)
-        if(remainingImages > 3 ) {
-            return currentImages.map( (imageData) => {
-               return <ImageCard src={imageData.image.imageURL} title={imageData.image.imageTitle}/>
-            })
-        } else if (remainingImages === 0) {
-            return currentImages.map( (imageData) => {
-                return <ImageCard src={imageData.image.imageURL} title={imageData.image.imageTitle}/>
-             })
+        for (let i = 0; i < 3; i++) {
+            imageCards.push(
+                <ImageCard src={images[i].image.imageURL} title={images[i].image.imageTitle} />
+            )
         }
-        
+        return imageCards
     }
     
     return (
-        <Container >
-            <Row >
-                {renderImageCards()}
-            </Row>
+        <Container>
+            {renderRow(renderImageCards())}
+            <UploadImageForm />
         </Container>
     )
 }

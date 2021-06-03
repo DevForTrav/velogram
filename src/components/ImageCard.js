@@ -4,7 +4,7 @@ import { Col, Card } from 'react-bootstrap'
 
 
 const ImageCard = (props) => {
-
+    console.log(props)
 
     return (
         <Col className="mb-4"> 
